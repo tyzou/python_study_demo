@@ -24,6 +24,12 @@ class Card:
         faces = ['', 'A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
         return f'{suites[self.suite.value]}{faces[self.face]}'  # 返回牌的花色和点数
 
+        # 告诉 Python 如何比较两张牌
+    def __lt__(self, other):
+        # 先比花色，再比点数
+        if self.suite != other.suite:
+            return self.suite.value < other.suite.value
+        return self.face < other.face
 class Poker:
     """扑克"""
     def __init__(self):
@@ -48,8 +54,37 @@ class Poker:
         """还有没有牌可以发"""
         return self.current < len(self.cards)
 
+class Player:
+    """玩家"""
+
+    def __init__(self,name):
+        self.name = name
+        self.cards = []
+
+    def get_one(self,card):
+        """摸牌"""
+        self.cards.append(card)
+
+    def arrage(self):
+        """整理手上的牌"""
+        self.cards.sort()
+
+
+
 if __name__ == '__main__':
+    # poker = Poker()
+    # print(f'洗牌前的牌：{poker.cards}')  # 洗牌前的牌
+    # poker.shuffle()
+    # print(f'洗牌后的牌：{poker.cards}')  # 洗牌后的牌
+
     poker = Poker()
-    print(f'洗牌前的牌：{poker.cards}')  # 洗牌前的牌
     poker.shuffle()
-    print(f'洗牌后的牌：{poker.cards}')  # 洗牌后的牌
+    players = [Player('东邪'), Player('西毒'), Player('南帝'), Player('北丐')]
+    for _ in range(13):
+        for player in players:
+            player.get_one(poker.deal())
+
+    for player in players:
+        player.arrage()
+        print(f'{player.name}:',end='')
+        print(player.cards)
