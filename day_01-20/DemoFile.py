@@ -1,28 +1,34 @@
 class Demo001:
 
-    def demo1(self):
-        print()
+    @staticmethod
+    def demo1():
+        print('----------------demo-------------------')
 
-    def demo2(self):
-        print()
+    @staticmethod
+    def demo2():
+        print('----------------demo-------------------')
 
-    def demo3(self):
-        print()
+    @staticmethod
+    def demo3():
+        print('----------------demo-------------------')
 
-    def demo4(self):
-        print()
+    @staticmethod
+    def demo4():
+        print('----------------demo-------------------')
 
-    def demo5(self):
-        print()
+    @staticmethod
+    def demo5():
+        print('----------------demo-------------------')
 
-    def demo6(self):
-        print()
+    @staticmethod
+    def demo6():
+        print('----------------demo-------------------')
+
 
 if __name__ == '__main__':
-     demo = Demo001()
-     demo.demo1()
-     demo.demo2()
-     demo.demo3()
-     demo.demo4()
-     demo.demo5()
-     demo.demo6()
+    Demo001.demo1()
+    Demo001.demo2()
+    Demo001.demo3()
+    Demo001.demo4()
+    Demo001.demo5()
+    Demo001.demo6()
